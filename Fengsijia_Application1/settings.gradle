@@ -1,1 +1,2 @@
-include ':app', ':fsj_library'
+include ':app', ':fsj_library', ':app2_slidingmenu'
+include ':slidelibrary'

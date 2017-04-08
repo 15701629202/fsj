@@ -10,7 +10,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/app2_slidingmenu" />
             <option value="$PROJECT_DIR$/fsj_library" />
+            <option value="$PROJECT_DIR$/slidelibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
