@@ -11,8 +11,11 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/app2_slidingmenu" />
+            <option value="$PROJECT_DIR$/app3_xutils" />
+            <option value="$PROJECT_DIR$/app4_zhoukao1" />
             <option value="$PROJECT_DIR$/fsj_library" />
             <option value="$PROJECT_DIR$/slidelibrary" />
+            <option value="$PROJECT_DIR$/xlistviewlibrary" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
