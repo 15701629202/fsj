@@ -9,9 +9,11 @@ import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import org.xutils.x;
+
 import java.util.List;
 
-import bean.TTBean;
+import bean.NewsBean;
 import fsj.bawei.com.app4_zhoukao1.R;
 
 /**
@@ -22,9 +24,9 @@ import fsj.bawei.com.app4_zhoukao1.R;
 
 public class MyBaseAdapter extends BaseAdapter {
     private Context context;
-    private List<TTBean.ResultBean.DataBean> mList;
+    private List<NewsBean.ResultBean.DataBean> mList;
 
-    public MyBaseAdapter(Context context, List<TTBean.ResultBean.DataBean> list) {
+    public MyBaseAdapter(Context context, List<NewsBean.ResultBean.DataBean> list) {
         this.context = context;
         mList = list;
     }
@@ -52,12 +54,13 @@ public class MyBaseAdapter extends BaseAdapter {
             holder = new viewHolder();
 
             holder.t1 = (TextView) convertView.findViewById(R.id.text_v1);
-            holder.t1 = (TextView) convertView.findViewById(R.id.text_v1);
+            holder.t2 = (TextView) convertView.findViewById(R.id.text_v2);
             holder.iv = (ImageView) convertView.findViewById(R.id.image_v);
             convertView.setTag(holder);
         } else {
             holder = (viewHolder) convertView.getTag();
         }
+        //x.image().bind(holder.iv,mList.get(position).getThumbnail_pic_s());
         ImageLoader.getInstance().displayImage(mList.get(position).getThumbnail_pic_s(),holder.iv);
         holder.t1.setText(mList.get(position).getTitle());
         holder.t2.setText(mList.get(position).getAuthor_name());

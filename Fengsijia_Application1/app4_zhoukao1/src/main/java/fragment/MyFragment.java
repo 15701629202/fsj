@@ -1,6 +1,8 @@
 package fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -24,6 +26,12 @@ public class MyFragment extends Fragment {
     private View mV;
     private XListView mXlv;
 
+    private Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    };
     public static MyFragment getFragment(String uri){
         MyFragment myFragment = new MyFragment();
         Bundle bundle = new Bundle();
@@ -35,23 +43,24 @@ public class MyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mV = inflater.inflate(R.layout.fragment_xlv_layout,null);
-        initView();
         return mV;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        initView();
+        initData();
+    }
 
+    private void initData() {
         Bundle arguments = getArguments();
-        String url = arguments.getString("url");
-
-        MyXUtils myXUtils = new MyXUtils();
-        myXUtils.DoGet();
+        String s = arguments.getString("url");
+        MyXUtils myxutils = new MyXUtils(getActivity(),mXlv,handler);
+        myxutils.DoGet(s);
     }
 
     private void initView() {
         mXlv = (XListView) mV.findViewById(R.id.xlv);
-       // mXlv.setAdapter(new MyBaseAdapter(getActivity(),));
     }
 }

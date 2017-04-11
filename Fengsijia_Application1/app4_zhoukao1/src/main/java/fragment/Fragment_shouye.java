@@ -1,5 +1,6 @@
 package fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -12,7 +13,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import adapter.MyAdapter;
+import adapter.MyVPAdapter;
 import fsj.bawei.com.app4_zhoukao1.R;
 
 /**
@@ -33,24 +34,19 @@ public class Fragment_shouye extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mV = inflater.inflate(R.layout.fragment_shouye,null);
-        initView();
         return mV;
 
     }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        addFragment();
-        MyAdapter adapter = new MyAdapter(getChildFragmentManager(), titleArr, list);
-        mVp.setAdapter(adapter);
+        initView();
+        initData();
+    }
 
-    }
-    private void initView() {
-        mTab = (TabLayout) mV.findViewById(R.id.tabl);
-        mVp = (ViewPager) mV.findViewById(R.id.vp);
-    }
-    private void addFragment() {
+    private void initData() {
+        mTab.setTabMode(TabLayout.MODE_SCROLLABLE);
+
         list.add(MyFragment.getFragment("tt"));
         list.add(MyFragment.getFragment("gj"));
         list.add(MyFragment.getFragment("ss"));
@@ -62,7 +58,35 @@ public class Fragment_shouye extends Fragment {
         list.add(MyFragment.getFragment("shehui"));
         list.add(MyFragment.getFragment("js"));
 
+        mTab.setTabTextColors(Color.BLACK,Color.RED);// tab被选中后，文字的颜色
+        mTab.setupWithViewPager(mVp);
+
+        mVp.setAdapter(new MyVPAdapter(getChildFragmentManager(),titleArr,list));
+
+        mVp.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                mTab.setTabTextColors(Color.BLACK,Color.RED);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
     }
+
+
+    private void initView() {
+        mTab = (TabLayout) mV.findViewById(R.id.tabl);
+        mVp = (ViewPager) mV.findViewById(R.id.vp);
+    }
+
 
 }

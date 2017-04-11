@@ -7,6 +7,6 @@ package utils;
  */
 
 public class Url {
-    public static final String path1 = "http://result.eolinker.com/k2BaduF2a6caa275f395919a66ab1dfe4b584cc60685573?uri=gj";
+    public static final String path1 = "http://result.eolinker.com/k2BaduF2a6caa275f395919a66ab1dfe4b584cc60685573?";
 
 }
